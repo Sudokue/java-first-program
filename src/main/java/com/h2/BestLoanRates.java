@@ -16,7 +16,17 @@ public class BestLoanRates {
         String name = scanner.nextLine();
         System.out.println("Hello" + name);
 
+        System.out.println("Enter the loan term (in years)");
+        int loanTermInYears = scanner.nextInt();
+        float bestRate = getRates(loanTermInYears);
+        if (bestRate == 0.0f) {
+            System.out.println("No available rates for term: " + loanTermInYears + "years");
+        } else {
+            System.out.println("Best Available Rate: " + getRates(loanTermInYears) + "%");
+        }
+        scanner.close();
     }
+
     public static float getRates(int loanTermInYears) {
         if(bestRates.containsKey(loanTermInYears)) {
             return bestRates.get(loanTermInYears);
